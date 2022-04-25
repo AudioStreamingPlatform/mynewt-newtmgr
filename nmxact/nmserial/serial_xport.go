@@ -286,8 +286,8 @@ func (sx *SerialXport) Tx(bytes []byte) error {
 		 * we need to save room for the header (2 byte) and
 		 * carriage return (and possibly LF 2 bytes), */
 
-		/* all totaled, 124 bytes should work */
-		writeLen := util.Min(124, totlen-written)
+		/* Support frames up to 1024 bytes */
+		writeLen := util.Min(1024, totlen-written)
 
 		writeBytes := base64Data[written : written+writeLen]
 		sx.txRaw(writeBytes)

@@ -150,6 +150,14 @@ func findChunkLen(s sesn.Sesn, hash []byte, upgrade bool, data []byte,
 		chunklen -= overflow
 	}
 
+	// Ensure the chunk length is always aligned as bootloader expected
+	if chunklen > IMAGE_UPLOAD_CHUNK_ALIGNMENT {
+		remain_bytes := chunklen % IMAGE_UPLOAD_CHUNK_ALIGNMENT
+		if remain_bytes != 0 {
+			chunklen -= remain_bytes
+		}
+	}
+
 	return chunklen, nil
 }
 
