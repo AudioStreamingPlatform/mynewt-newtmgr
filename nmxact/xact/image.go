@@ -46,6 +46,7 @@ const IMAGE_UPLOAD_START_WS = 1
 const IMAGE_UPLOAD_DEF_MAX_WS = 5
 const IMAGE_UPLOAD_STATUS_EXPECTED = 0
 const IMAGE_UPLOAD_STATUS_RQ = 1
+const IMAGE_UPLOAD_CHUNK_ALIGNMENT = 4
 
 type ImageUploadProgressFn func(c *ImageUploadCmd, r *nmp.ImageUploadRsp)
 type ImageUploadCmd struct {
